@@ -19,6 +19,8 @@ async function run() {
         const servicesCollection = database.collection("services");
         const hotelDatabase = client.db("hotelsCollection");
         const hotelsCollection = hotelDatabase.collection("hotels");
+        const aboutDatabase = client.db("aboutCollection");
+        const aboutCollection = aboutDatabase.collection("about");
         const destinationsDatabase = client.db("destinationsCollection");
         const destinationsCollection = destinationsDatabase.collection("destinations");
         const orderDatabase = client.db("placeOrder");
@@ -37,6 +39,12 @@ async function run() {
               const cursor = hotelsCollection.find({});
               const hotels = await cursor.toArray();
               res.json(hotels);
+          })
+        // about api
+          app.get('/about',async(req,res)=>{
+              const cursor = aboutCollection.find({});
+              const about = await cursor.toArray();
+              res.json(about);
           })
 
         //   destination api
